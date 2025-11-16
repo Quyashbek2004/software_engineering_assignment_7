@@ -1,24 +1,14 @@
-// @ts-check
-
 import { defineConfig } from 'eslint/config';
+import tseslint from '@typescript-eslint/eslint-plugin';
 
-export default defineConfig({
-  root: true,
-  env: {
-    node: true,
-    es2021: true
+export default defineConfig([
+  {
+    ignores: ['node_modules/**']
   },
-  parser: '@typescript-eslint/parser',
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module'
-  },
-  plugins: ['@typescript-eslint'],
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended'
-  ],
-  rules: {
-    // project-specific rules can go here
+  ...tseslint.configs['flat/recommended'],
+  {
+    rules: {
+      // project-specific rules can go here
+    }
   }
-});
+]);
